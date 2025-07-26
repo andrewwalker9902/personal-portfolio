@@ -12,7 +12,7 @@ function App() {
         <section className="about">
           <h2>About Me</h2>
           <p>
-            I'm a 4th-year computer science student passionate about web
+            I'm a recent computer science graduate passionate about web
             development, game design, and building cool stuff with code.
           </p>
         </section>
