@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+.App {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem 0;
+  background-color: #282c34;
+  color: white;
+  border-radius: 8px;
+}
+
+.content section {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+  font-size: 0.9rem;
+  color: #666;
+}
