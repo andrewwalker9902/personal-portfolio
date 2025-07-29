@@ -6,6 +6,8 @@ function App() {
   const [isEmailMenuOpen, setIsEmailMenuOpen] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [activeProject, setActiveProject] = useState<string | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isImageExpanded, setIsImageExpanded] = useState(false);
   const emailMenuRef = useRef<HTMLDivElement>(null);
   const emailButtonRef = useRef<HTMLButtonElement>(null);
   const [emailPopupPosition, setEmailPopupPosition] = useState<{ top: number; left: number } | null>(null);
@@ -213,35 +215,75 @@ function App() {
 
               {activeProject === 'Inventory Manager' && (
                 <div className="space-y-6">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* Project Demo Video */}
-                    <div className="bg-gray-800 rounded-lg overflow-hidden border border-gray-600 relative">
-                      {/* Replace 'YOUR_INVENTORY_VIDEO_ID' with your actual YouTube video ID */}
-                      <iframe
-                        width="100%"
-                        height="250"
-                        src="https://www.youtube.com/embed/YOUR_INVENTORY_VIDEO_ID"
-                        title="Inventory Manager Demo"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        className="w-full h-full"
-                      ></iframe>
-                      {/* Fallback for when video ID is not set */}
-                      {/* Remove this section once you add your video ID */}
-                      <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
-                        <div className="text-center text-gray-400">
-                          <div className="w-16 h-16 bg-gray-700 rounded-lg mx-auto mb-3 flex items-center justify-center text-2xl">
-                            🏪
-                          </div>
-                          <p className="text-sm">Inventory Manager Demo</p>
-                          <p className="text-xs mt-1">Replace YOUR_INVENTORY_VIDEO_ID with your YouTube video ID</p>
-                        </div>
-                      </div>
-                    </div>
+                  {/* Project Demo Carousel - Full Width */}
+                  <div className="bg-gray-800 rounded-lg overflow-hidden border border-gray-600 relative">
+                    {(() => {
+                      const inventoryImages = [
+                        'src/assets/sportsmanager1.png',
+                        'src/assets/sportsmanager2.png',
+                        'src/assets/sportsmanager3.png',
+                        'src/assets/sportsmanager4.png'
+                      ];
 
-                    {/* Project Details */}
-                    <div className="space-y-4">
+                      return (
+                        <div className="relative w-full h-96">
+                          <img
+                            src={inventoryImages[currentImageIndex]}
+                            alt={`Inventory Manager Screenshot ${currentImageIndex + 1}`}
+                            className="w-full h-full object-contain bg-gray-900 cursor-pointer hover:opacity-90 transition-opacity"
+                            onClick={() => setIsImageExpanded(true)}
+                            onError={(e) => {
+                              // Fallback if image doesn't exist
+                              e.currentTarget.style.display = 'none';
+                              const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                              if (fallback) fallback.style.display = 'flex';
+                            }}
+                          />
+                          {/* Fallback for when images are not available */}
+                          <div className="absolute inset-0 bg-gray-800 flex items-center justify-center" style={{ display: 'none' }}>
+                            <div className="text-center text-gray-400">
+                              <div className="w-16 h-16 bg-gray-700 rounded-lg mx-auto mb-3 flex items-center justify-center text-2xl">
+                                🏪
+                              </div>
+                              <p className="text-sm">Inventory Manager Screenshots</p>
+                              <p className="text-xs mt-1">Add sportsmanager*.png files to src/assets/ folder</p>
+                            </div>
+                          </div>
+
+                          {/* Expand icon overlay */}
+                          <div className="absolute top-4 left-4 bg-black/60 text-white p-2 rounded-full opacity-70 hover:opacity-100 transition-opacity pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                          </div>
+
+                          {/* Navigation Arrows */}
+                          <button
+                            onClick={() => setCurrentImageIndex((prev) => prev === 0 ? inventoryImages.length - 1 : prev - 1)}
+                            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-3 transition-colors text-xl font-bold"
+                          >
+                            &#8249;
+                          </button>
+                          <button
+                            onClick={() => setCurrentImageIndex((prev) => prev === inventoryImages.length - 1 ? 0 : prev + 1)}
+                            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-3 transition-colors text-xl font-bold"
+                          >
+                            &#8250;
+                          </button>
+
+                          {/* Image Counter */}
+                          <div className="absolute top-4 right-4 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
+                            {currentImageIndex + 1} / {inventoryImages.length}
+                          </div>
+                        </div>
+                      );
+                    })()}
+                  </div>
+
+                  {/* Project Details */}
+                  <div className="space-y-6">
+                    {/* Overview and Key Features side by side */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                       <div>
                         <h4 className="text-lg font-semibold text-white mb-2">Project Overview</h4>
                         <p className="text-gray-300 leading-relaxed">
@@ -260,17 +302,18 @@ function App() {
                           <li>• Responsive, React-based frontend interface</li>
                         </ul>
                       </div>
+                    </div>
 
-                      <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Technologies Used</h4>
-                        <div className="flex flex-wrap gap-2">
-                          <span className="px-2 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-sm">React</span>
-                          <span className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Tailwind CSS</span>
-                          <span className="px-2 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-sm">Node.js</span>
-                          <span className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Express.js</span>
-                          <span className="px-2 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-sm">MySQL</span>
-                          <span className="px-2 py-1 bg-red-500/20 text-red-300 rounded-full text-sm">REST API</span>
-                        </div>
+                    {/* Technologies Used - full width */}
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-2">Technologies Used</h4>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-2 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-sm">React</span>
+                        <span className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Tailwind CSS</span>
+                        <span className="px-2 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-sm">Node.js</span>
+                        <span className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">Express.js</span>
+                        <span className="px-2 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-sm">MySQL</span>
+                        <span className="px-2 py-1 bg-red-500/20 text-red-300 rounded-full text-sm">REST API</span>
                       </div>
                     </div>
                   </div>
@@ -306,7 +349,6 @@ function App() {
                     </a>
                   </div>
                 </div>
-
               )}
 
               {activeProject === 'Auto Grader' && (
@@ -389,6 +431,62 @@ function App() {
                 </div>
 
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Expanded Image Modal */}
+      {isImageExpanded && (
+        <div
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+          onClick={() => setIsImageExpanded(false)}
+        >
+          <div
+            className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={`src/assets/sportsmanager${currentImageIndex + 1}.png`}
+              alt={`Inventory Manager Screenshot ${currentImageIndex + 1} - Expanded View`}
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              onError={(e) => {
+                // Fallback if image doesn't exist
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+            
+            {/* Close button */}
+            <button
+              onClick={() => setIsImageExpanded(false)}
+              className="absolute top-4 right-4 w-10 h-10 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center text-xl font-bold transition-colors"
+            >
+              ✕
+            </button>
+
+            {/* Navigation in expanded view */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentImageIndex((prev) => prev === 0 ? 3 : prev - 1);
+              }}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-4 transition-colors text-2xl font-bold"
+            >
+              &#8249;
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentImageIndex((prev) => prev === 3 ? 0 : prev + 1);
+              }}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-4 transition-colors text-2xl font-bold"
+            >
+              &#8250;
+            </button>
+
+            {/* Image counter in expanded view */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 text-white px-4 py-2 rounded-full text-sm">
+              {currentImageIndex + 1} / 4
             </div>
           </div>
         </div>
