@@ -42,11 +42,11 @@ function App() {
       <div className="absolute bottom-1/4 -left-32 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
 
       {isResumeOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setIsResumeOpen(false)}
         >
-          <div 
+          <div
             className="bg-gray-900 rounded-xl border border-gray-700 w-full max-w-4xl h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
@@ -81,11 +81,11 @@ function App() {
 
       {/* Project Modal */}
       {activeProject && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setActiveProject(null)}
         >
-          <div 
+          <div
             className="bg-gray-900 rounded-xl border border-gray-700 w-full max-w-5xl h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
