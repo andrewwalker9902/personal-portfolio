@@ -56,7 +56,7 @@ function App() {
               <h3 className="text-lg font-semibold text-white">Resume - Andrew Walker</h3>
               <div className="flex items-center space-x-3">
                 <a
-                  href="/src/assets/Andrew Walker Resume.pdf"
+                  href="/Andrew Walker Resume.pdf"
                   download="Andrew_Walker_Resume.pdf"
                   className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center space-x-2"
                 >
@@ -72,7 +72,7 @@ function App() {
             </div>
             <div className="flex-1 p-4">
               <iframe
-                src="/src/assets/Andrew Walker Resume.pdf"
+                src="/Andrew Walker Resume.pdf"
                 className="w-full h-full rounded-lg border border-gray-700"
                 title="Resume Preview"
               />
@@ -110,7 +110,7 @@ function App() {
                     {/* Project Demo GIF */}
                     <div className="bg-gray-800 rounded-lg overflow-hidden border border-gray-600 relative aspect-video">
                       <img
-                        src="src/assets/chronoswap-demo.gif"
+                        src="/chronoswap-demo.gif"
                         alt="ChronoSwap gameplay demo showing time manipulation mechanics"
                         className="w-full h-full object-contain"
                         onError={(e) => {
@@ -219,10 +219,10 @@ function App() {
                   <div className="bg-gray-800 rounded-lg overflow-hidden border border-gray-600 relative">
                     {(() => {
                       const inventoryImages = [
-                        'src/assets/sportsmanager1.png',
-                        'src/assets/sportsmanager2.png',
-                        'src/assets/sportsmanager3.png',
-                        'src/assets/sportsmanager4.png'
+                        '/sportsmanager1.png',
+                        '/sportsmanager2.png',
+                        '/sportsmanager3.png',
+                        '/sportsmanager4.png'
                       ];
 
                       return (
@@ -447,7 +447,7 @@ function App() {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={`src/assets/sportsmanager${currentImageIndex + 1}.png`}
+              src={`/sportsmanager${currentImageIndex + 1}.png`}
               alt={`Inventory Manager Screenshot ${currentImageIndex + 1} - Expanded View`}
               className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
               onError={(e) => {
@@ -519,7 +519,7 @@ function App() {
                   <div className="w-0.5 h-5 bg-gray-400 mx-2 rounded-full"></div>
                   <div className="flex flex-col">
                     <div className="flex items-center gap-1 text-sm text-gray-400">
-                      <img src="src/assets/location-pin-svgrepo-com.svg" alt="Location" className="w-4 h-4" />
+                      <img src="/location-pin-svgrepo-com.svg" alt="Location" className="w-4 h-4" />
                       <span className="bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent font-medium">
                         Charleston, WV
                       </span>
@@ -556,7 +556,7 @@ function App() {
                           }}
                         >
                           <img
-                            src="src/assets/email-svgrepo-com.svg"
+                            src="/email-svgrepo-com.svg"
                             alt="Email"
                             style={{
                               width: '12px',
@@ -569,7 +569,7 @@ function App() {
                       </div>
                       <a href="https://github.com/andrewwalker9902" target="_blank"
                         className="w-5 h-5 bg-purple-700 hover:bg-purple-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white">
-                        <img src="src/assets/github-mark-white.svg" alt="GitHub" className="w-3 h-3" />
+                        <img src="/github-mark-white.svg" alt="GitHub" className="w-3 h-3" />
                       </a>
                     </div>
                   </div>
@@ -578,7 +578,7 @@ function App() {
                   onClick={() => setIsResumeOpen(true)}
                   className="h-8 px-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-lg text-sm font-medium transition-all duration-300 flex items-center space-x-2 hover:scale-105"
                 >
-                  <img src="src/assets/cloud-arrow-down.svg" alt="Download Resume" className="w-4 h-4" />
+                  <img src="/cloud-arrow-down.svg" alt="Download Resume" className="w-4 h-4" />
                   <span>Resume</span>
                 </button>
               </div>
