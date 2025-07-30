@@ -56,8 +56,8 @@ function App() {
               <h3 className="text-lg font-semibold text-white">Resume - Andrew Walker</h3>
               <div className="flex items-center space-x-3">
                 <a
-                  href="/Andrew Walker Resume.pdf"
-                  download="Andrew_Walker_Resume.pdf"
+                  href="/AW resume.pdf"
+                  download="AW resume.pdf"
                   className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center space-x-2"
                 >
                   <h3 className="text-lg font-semibold text-white">Download</h3>
@@ -72,7 +72,7 @@ function App() {
             </div>
             <div className="flex-1 p-4">
               <iframe
-                src="/Andrew Walker Resume.pdf"
+                src="/AW resume.pdf"
                 className="w-full h-full rounded-lg border border-gray-700"
                 title="Resume Preview"
               />
