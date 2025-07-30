@@ -523,54 +523,56 @@ function App() {
                       <span className="bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent font-medium">
                         Charleston, WV
                       </span>
-                      <div className="relative" ref={emailMenuRef}>
-                        <button
-                          ref={emailButtonRef}
-                          onClick={() => {
-                            if (emailButtonRef.current) {
-                              const rect = emailButtonRef.current.getBoundingClientRect();
-                              setEmailPopupPosition({
-                                top: rect.top - 90,
-                                left: rect.left,
-                              });
-                            }
-                            setIsEmailMenuOpen((prev) => !prev);
-                          }}
-                          style={{
-                            width: '20px',
-                            height: '20px',
-                            minWidth: '20px',
-                            minHeight: '20px',
-                            maxWidth: '20px',
-                            maxHeight: '20px',
-                            backgroundColor: '#374151',
-                            borderRadius: '50%',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            border: 'none',
-                            cursor: 'pointer',
-                            padding: '0',
-                            margin: '0',
-                            boxSizing: 'border-box'
-                          }}
-                        >
-                          <img
-                            src="/email-svgrepo-com.svg"
-                            alt="Email"
-                            style={{
-                              width: '12px',
-                              height: '12px',
-                              filter: 'brightness(0) invert(1)',
-                              display: 'block'
+                      <div className="flex flex-col sm:flex-row sm:gap-1 gap-2 ml-1">
+                        <div className="relative" ref={emailMenuRef}>
+                          <button
+                            ref={emailButtonRef}
+                            onClick={() => {
+                              if (emailButtonRef.current) {
+                                const rect = emailButtonRef.current.getBoundingClientRect();
+                                setEmailPopupPosition({
+                                  top: rect.top - 90,
+                                  left: rect.left,
+                                });
+                              }
+                              setIsEmailMenuOpen((prev) => !prev);
                             }}
-                          />
-                        </button>
+                            style={{
+                              width: '20px',
+                              height: '20px',
+                              minWidth: '20px',
+                              minHeight: '20px',
+                              maxWidth: '20px',
+                              maxHeight: '20px',
+                              backgroundColor: '#374151',
+                              borderRadius: '50%',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              border: 'none',
+                              cursor: 'pointer',
+                              padding: '0',
+                              margin: '0',
+                              boxSizing: 'border-box'
+                            }}
+                          >
+                            <img
+                              src="/email-svgrepo-com.svg"
+                              alt="Email"
+                              style={{
+                                width: '12px',
+                                height: '12px',
+                                filter: 'brightness(0) invert(1)',
+                                display: 'block'
+                              }}
+                            />
+                          </button>
+                        </div>
+                        <a href="https://github.com/andrewwalker9902" target="_blank"
+                          className="w-5 h-5 bg-purple-700 hover:bg-purple-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white">
+                          <img src="/github-mark-white.svg" alt="GitHub" className="w-3 h-3" />
+                        </a>
                       </div>
-                      <a href="https://github.com/andrewwalker9902" target="_blank"
-                        className="w-4 h-4 sm:w-5 sm:h-5 bg-purple-700 hover:bg-purple-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white">
-                        <img src="/github-mark-white.svg" alt="GitHub" className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                      </a>
                     </div>
                   </div>
                 </h2>
