@@ -45,11 +45,11 @@ function App() {
 
       {isResumeOpen && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={() => setIsResumeOpen(false)}
         >
           <div
-            className="bg-gray-900 rounded-xl border border-gray-700 w-full max-w-4xl h-[90vh] flex flex-col"
+            className="bg-gray-900 rounded-xl border border-gray-700 w-full max-w-4xl h-[95vh] sm:h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between p-4 border-b border-gray-700">
@@ -84,11 +84,11 @@ function App() {
       {/* Project Modal */}
       {activeProject && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={() => setActiveProject(null)}
         >
           <div
-            className="bg-gray-900 rounded-xl border border-gray-700 w-full max-w-5xl h-[90vh] flex flex-col"
+            className="bg-gray-900 rounded-xl border border-gray-700 w-full max-w-5xl h-[95vh] sm:h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -103,7 +103,7 @@ function App() {
             </div>
 
             {/* Modal Content */}
-            <div className="flex-1 p-6 overflow-y-auto">
+            <div className="flex-1 p-3 sm:p-6 overflow-y-auto">
               {activeProject === 'ChronoSwap' && (
                 <div className="space-y-6">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -226,7 +226,7 @@ function App() {
                       ];
 
                       return (
-                        <div className="relative w-full h-96">
+                        <div className="relative w-full h-48 sm:h-64 lg:h-96">
                           <img
                             src={inventoryImages[currentImageIndex]}
                             alt={`Inventory Manager Screenshot ${currentImageIndex + 1}`}
@@ -251,8 +251,8 @@ function App() {
                           </div>
 
                           {/* Expand icon overlay */}
-                          <div className="absolute top-4 left-4 bg-black/60 text-white p-2 rounded-full opacity-70 hover:opacity-100 transition-opacity pointer-events-none">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <div className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-black/60 text-white p-1.5 sm:p-2 rounded-full opacity-70 hover:opacity-100 transition-opacity pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                             </svg>
                           </div>
@@ -260,19 +260,19 @@ function App() {
                           {/* Navigation Arrows */}
                           <button
                             onClick={() => setCurrentImageIndex((prev) => prev === 0 ? inventoryImages.length - 1 : prev - 1)}
-                            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-3 transition-colors text-xl font-bold"
+                            className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-2 sm:p-3 transition-colors text-lg sm:text-xl font-bold"
                           >
                             &#8249;
                           </button>
                           <button
                             onClick={() => setCurrentImageIndex((prev) => prev === inventoryImages.length - 1 ? 0 : prev + 1)}
-                            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-3 transition-colors text-xl font-bold"
+                            className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-2 sm:p-3 transition-colors text-lg sm:text-xl font-bold"
                           >
                             &#8250;
                           </button>
 
                           {/* Image Counter */}
-                          <div className="absolute top-4 right-4 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
+                          <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-black/60 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
                             {currentImageIndex + 1} / {inventoryImages.length}
                           </div>
                         </div>
@@ -439,11 +439,11 @@ function App() {
       {/* Expanded Image Modal */}
       {isImageExpanded && (
         <div
-          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[60] flex items-center justify-center p-2 sm:p-4"
           onClick={() => setIsImageExpanded(false)}
         >
           <div
-            className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center"
+            className="relative max-w-7xl max-h-[95vh] sm:max-h-[90vh] w-full h-full flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <img
@@ -459,7 +459,7 @@ function App() {
             {/* Close button */}
             <button
               onClick={() => setIsImageExpanded(false)}
-              className="absolute top-4 right-4 w-10 h-10 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center text-xl font-bold transition-colors"
+              className="absolute top-2 sm:top-4 right-2 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center text-lg sm:text-xl font-bold transition-colors"
             >
               ✕
             </button>
@@ -470,7 +470,7 @@ function App() {
                 e.stopPropagation();
                 setCurrentImageIndex((prev) => prev === 0 ? 3 : prev - 1);
               }}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-4 transition-colors text-2xl font-bold"
+              className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-3 sm:p-4 transition-colors text-xl sm:text-2xl font-bold"
             >
               &#8249;
             </button>
@@ -479,13 +479,13 @@ function App() {
                 e.stopPropagation();
                 setCurrentImageIndex((prev) => prev === 3 ? 0 : prev + 1);
               }}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-4 transition-colors text-2xl font-bold"
+              className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-3 sm:p-4 transition-colors text-xl sm:text-2xl font-bold"
             >
               &#8250;
             </button>
 
             {/* Image counter in expanded view */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 text-white px-4 py-2 rounded-full text-sm">
+            <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 text-white px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm">
               {currentImageIndex + 1} / 4
             </div>
           </div>
@@ -496,12 +496,12 @@ function App() {
         <div className="max-w-6xl mx-auto flex flex-col min-h-[90vh]">
           <header className="text-center space-y-3 mb-6">
             <div className="relative inline-block">
-              <h1 className="text-4xl md:text-5xl font-bold text-white bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
                 Andrew Walker
               </h1>
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-40 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 sm:w-40 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
             </div>
-            <p className="text-lg md:text-xl text-gray-300 font-light tracking-wide">Junior Software Developer & Game Designer</p>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light tracking-wide">Junior Software Developer & Game Designer</p>
             <div className="flex items-center justify-center space-x-8 mt-2">
               <div className="flex items-center space-x-2 text-sm text-gray-400">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
@@ -510,16 +510,16 @@ function App() {
             </div>
           </header>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1 min-h-0 max-h-[70vh] text-base">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 flex-1 min-h-0 text-sm lg:text-base">
             {/* About Me */}
-            <section className="backdrop-blur-sm bg-white/5 rounded-xl p-4 md:p-6 border border-white/10 hover:border-white/20 transition-all duration-300 flex flex-col overflow-hidden">
+            <section className="backdrop-blur-sm bg-white/5 rounded-xl p-4 md:p-6 border border-white/10 hover:border-white/20 transition-all duration-300 flex flex-col min-h-[400px] max-h-[80vh]">
               <div className="flex justify-between items-start gap-4 mb-4">
                 <h2 className="text-2xl font-semibold text-white flex items-center">
                   About Me
                   <div className="w-0.5 h-5 bg-gray-400 mx-2 rounded-full"></div>
                   <div className="flex flex-col">
-                    <div className="flex items-center gap-1 text-sm text-gray-400">
-                      <img src="/location-pin-svgrepo-com.svg" alt="Location" className="w-4 h-4" />
+                    <div className="flex items-center gap-1 text-xs sm:text-sm text-gray-400">
+                      <img src="/location-pin-svgrepo-com.svg" alt="Location" className="w-3 h-3 sm:w-4 sm:h-4" />
                       <span className="bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent font-medium">
                         Charleston, WV
                       </span>
@@ -568,17 +568,17 @@ function App() {
                         </button>
                       </div>
                       <a href="https://github.com/andrewwalker9902" target="_blank"
-                        className="w-5 h-5 bg-purple-700 hover:bg-purple-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white">
-                        <img src="/github-mark-white.svg" alt="GitHub" className="w-3 h-3" />
+                        className="w-4 h-4 sm:w-5 sm:h-5 bg-purple-700 hover:bg-purple-600 rounded-full flex items-center justify-center text-gray-300 hover:text-white">
+                        <img src="/github-mark-white.svg" alt="GitHub" className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                       </a>
                     </div>
                   </div>
                 </h2>
                 <button
                   onClick={() => setIsResumeOpen(true)}
-                  className="h-8 px-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-lg text-sm font-medium transition-all duration-300 flex items-center space-x-2 hover:scale-105"
+                  className="h-7 sm:h-8 px-2 sm:px-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 flex items-center space-x-1 sm:space-x-2 hover:scale-105"
                 >
-                  <img src="/cloud-arrow-down.svg" alt="Download Resume" className="w-4 h-4" />
+                  <img src="/cloud-arrow-down.svg" alt="Download Resume" className="w-3 h-3 sm:w-4 sm:h-4" />
                   <span>Resume</span>
                 </button>
               </div>
@@ -639,7 +639,7 @@ function App() {
             )}
 
             {/* My Work */}
-            <section className="backdrop-blur-sm bg-white/5 rounded-xl p-4 md:p-6 border border-white/10 hover:border-white/20 transition-all duration-300 flex flex-col overflow-hidden">
+            <section className="backdrop-blur-sm bg-white/5 rounded-xl p-4 md:p-6 border border-white/10 hover:border-white/20 transition-all duration-300 flex flex-col min-h-[400px] max-h-[80vh]">
               <div className="flex justify-between items-start gap-4 mb-4">
                 <h2 className="text-2xl font-semibold text-white flex items-center">
                   My Work
