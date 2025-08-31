@@ -521,7 +521,7 @@ function App() {
                     <div className="flex items-center gap-1 text-xs sm:text-sm text-gray-400">
                       <img src="/location-pin-svgrepo-com.svg" alt="Location" className="w-3 h-3 sm:w-4 sm:h-4" />
                       <span className="bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent font-medium">
-                        Charleston, WV
+                        Chicago, IL
                       </span>
                       <div className="flex flex-col sm:flex-row sm:gap-1 gap-2 ml-1">
                         <div className="relative" ref={emailMenuRef}>
